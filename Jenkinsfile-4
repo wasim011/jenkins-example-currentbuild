@@ -9,11 +9,11 @@ pipeline {
   stages {
     stage('Hello') {
       steps {
-        sh """
+        bat """
           echo "FROM alpine:latest" > Dockerfile
           docker build -t ${imageTag} .
         """
-        sh '''
+        bat '''
           echo $DH_CREDS_PSW | docker login --username=$DH_CREDS_USR --password-stdin
         '''
         script {
